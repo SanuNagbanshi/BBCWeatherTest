@@ -9,22 +9,25 @@ namespace BBCWeatherTest.Steps
     [Binding]
     class BBCHomePageStepDefinition
     {
-        protected IWebDriver driver;
+        private readonly IWebDriver _driver;
         BBCHomePage _bBCHomePage;
         ForecastPage _forecastPage;
+
+        public BBCHomePageStepDefinition(ScenarioContext scenarioContext)
+        {
+            _driver = scenarioContext["WebDriver"] as IWebDriver;
+        }
 
         [Given(@"Url of BBC Weather Site is launched")]
         public void GivenUrlOfBBCWeatherSiteIsLaunched()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.bbc.com/weather");
+            _driver.Navigate().GoToUrl("https://www.bbc.com/weather");
         }
 
         [When(@"I enter city Name as ""(.*)""")]
         public void WhenIEnterCityNameAs(string cityName)
         {
-            _bBCHomePage = new BBCHomePage(driver);
+            _bBCHomePage = new BBCHomePage(_driver);
             _bBCHomePage.SearchCity(cityName);
         }
 
@@ -32,7 +35,7 @@ namespace BBCWeatherTest.Steps
         public void WhenIClickOnTomorrowDateOnWeatherPage()
         {
 
-            _forecastPage = new ForecastPage(driver);
+            _forecastPage = new ForecastPage(_driver);
             _forecastPage.SelectTomorrow();
         }
 

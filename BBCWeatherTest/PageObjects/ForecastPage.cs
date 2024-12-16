@@ -5,14 +5,15 @@ namespace BBCWeatherTest.PageObjects
 {
       public class ForecastPage : BasePage
         {
-            [FindsBy(How = How.XPath, Using = "//*[@id='daylink-2']")]
+            [FindsBy(How = How.XPath, Using = "//*[@id='daylink-1']")]
             private IWebElement TomorrowTab;
 
-            [FindsBy(How = How.CssSelector, Using = ".wr-day-temperature__high-value .wr-value--temperature--c")]
-            private IWebElement HighTemperature;
+            [FindsBy(How = How.XPath, Using = "//*[@id='daylink-2']//span[@class='wr-day-temperature__high-value']/span/span[1]")]
+            private IWebElement _tomorrowHighTemperature;
 
-            [FindsBy(How = How.CssSelector, Using = ".wr-day-temperature__low-value .wr-value--temperature--c")]
-            private IWebElement LowTemperature;
+            [FindsBy(How = How.XPath, Using = "//*[@id='daylink-2']//span[@class='wr-day-temperature__low-value']/span/span[1]")]
+            private IWebElement _tomorrowLowTemperature;
+
 
             public ForecastPage(IWebDriver driver) : base(driver) { }
 
@@ -23,12 +24,12 @@ namespace BBCWeatherTest.PageObjects
 
             public int GetHighTemperature()
             {
-                return int.Parse(HighTemperature.Text.Replace("°", ""));
+                return int.Parse(_tomorrowHighTemperature.Text.Replace("°", ""));
             }
 
             public int GetLowTemperature()
             {
-                return int.Parse(LowTemperature.Text.Replace("°", ""));
+                return int.Parse(_tomorrowLowTemperature.Text.Replace("°", ""));
             }
         }
 }
