@@ -1,0 +1,13 @@
+﻿1.How long did you spend on the technical task?
+-> around 2.5 -3 hrs
+
+2.If u had more time ,would you add anything to your solution?
+->Yes ,a lot of things we can improve on the framework side like improvising the pagefactory model
+and creating basestepdefinition and basepagemodel and trying to refactor the redundant codes.
+also ,we can implement some reporting mehanism as well for logs as well as utilise screenshots method.
+
+3.What do you think is the most interesting trend in test automation?
+->I think the most interesing trend right now would be the integration of AI with test automation,
+and codeless automation also is increasing these days thereby reducing testing time. 
+
+
